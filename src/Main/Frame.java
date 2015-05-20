@@ -8,7 +8,14 @@ import java.util.ArrayList;
  */
 public class Frame {
 
+    public enum Types {
+        STANDARD,
+        STRIKE,
+        SPARE
+    };
+
     private ArrayList<Integer> _throws;
+    private Types type;
 
     public Frame(int throwOne, int throwTwo) {
 
@@ -23,6 +30,7 @@ public class Frame {
         }
         _throws.add(throwOne);
         _throws.add(throwTwo);
+        setType();
     }
 
     public int getThrowOne() {
@@ -35,5 +43,26 @@ public class Frame {
 
     public int getFrameScore() {
         return _throws.get(0) + _throws.get(1);
+    }
+
+    public Types getType() {
+        return type;
+    }
+
+    private void setType() {
+
+        if(_throws.get(0) == 10) {
+
+            type = Types.STRIKE;
+
+        }else if((_throws.get(0) + _throws.get(1)) == 10){
+
+            type = Types.SPARE;
+
+        }else {
+
+            type = Types.STANDARD;
+
+        }
     }
 }

@@ -1,6 +1,7 @@
 package Main;
 
 import org.w3c.dom.ranges.RangeException;
+import Main.Frame.Types;
 
 /**
  * Created by henrik on 20/05/15.
@@ -34,9 +35,27 @@ public class Game {
     public int getGameScore() {
 
         int returnVal = 0;
+        Frame f;
 
-        for(Frame f: frames) {
-            returnVal += f.getFrameScore();
+        for(int i = 0; i < frames.length; i++) {
+
+            f = frames[i];
+
+            if(f.getType() == Types.STRIKE) {
+
+                returnVal += 10;
+                returnVal += frames[i+1].getFrameScore();
+
+            }else if(f.getType() == Types.SPARE) {
+
+                returnVal += f.getFrameScore();
+                returnVal += frames[i+1].getThrowOne();
+
+            }else {
+
+                returnVal += f.getFrameScore();
+
+            }
         }
 
         return returnVal;

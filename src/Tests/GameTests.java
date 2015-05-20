@@ -91,4 +91,29 @@ public class GameTests {
         int result = g.getGameScore();
         assertEquals(94, result);
     }
+
+    //Testing Spare and GameScore
+    @Test
+    public void test_GameScore_fullGameWithNoStrikesAndOneSpare() {
+
+        Frame[] frames = {
+                new Frame(5,5),
+                new Frame(3,6),
+                new Frame(7,2),
+                new Frame(3,6),
+                new Frame(4,4),
+                new Frame(5,3),
+                new Frame(3,3),
+                new Frame(4,5),
+                new Frame(8,1),
+                new Frame(2,6)
+        };
+
+        for(int i = 0; i < 10; i++) {
+            g.appendFrame(frames[i]);
+        }
+
+        int result = g.getGameScore();
+        assertEquals(88, result);
+    }
 }

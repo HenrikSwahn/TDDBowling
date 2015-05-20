@@ -34,13 +34,16 @@
           <file leaf-file-name="Frame.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/Main/Frame.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.3466872" vertical-offset="0" max-vertical-offset="649">
-                  <caret line="15" column="30" selection-start-line="15" selection-start-column="30" selection-end-line="15" selection-end-column="30" />
+                <state vertical-scroll-proportion="0.8320493" vertical-offset="0" max-vertical-offset="675">
+                  <caret line="36" column="47" selection-start-line="36" selection-start-column="47" selection-end-line="36" selection-end-column="47" />
                   <folding>
-                    <element signature="e#340#341#0" expanded="true" />
-                    <element signature="e#377#378#0" expanded="true" />
-                    <element signature="e#409#410#0" expanded="true" />
-                    <element signature="e#446#447#0" expanded="true" />
+                    <element signature="imports" expanded="true" />
+                    <element signature="e#657#658#0" expanded="true" />
+                    <element signature="e#694#695#0" expanded="true" />
+                    <element signature="e#726#727#0" expanded="true" />
+                    <element signature="e#763#764#0" expanded="true" />
+                    <element signature="e#797#798#0" expanded="true" />
+                    <element signature="e#851#852#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -53,12 +56,10 @@
           <file leaf-file-name="FrameTest.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/Tests/FrameTest.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.53158706" vertical-offset="0" max-vertical-offset="649">
-                  <caret line="23" column="32" selection-start-line="23" selection-start-column="32" selection-end-line="23" selection-end-column="32" />
+                <state vertical-scroll-proportion="0.8382126" vertical-offset="251" max-vertical-offset="900">
+                  <caret line="53" column="5" selection-start-line="53" selection-start-column="5" selection-end-line="53" selection-end-column="5" />
                   <folding>
                     <element signature="imports" expanded="true" />
-                    <element signature="e#202#203#0" expanded="true" />
-                    <element signature="e#236#237#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -474,12 +475,12 @@
       <created>1432119977289</created>
       <option name="number" value="Default" />
       <updated>1432119977289</updated>
-      <workItem from="1432119979236" duration="1258000" />
+      <workItem from="1432119979236" duration="2312000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1258000" />
+    <option name="totallyTimeSpent" value="2312000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1080" extended-state="0" />
@@ -541,25 +542,26 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/Tests/FrameTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.53158706" vertical-offset="0" max-vertical-offset="649">
-          <caret line="23" column="32" selection-start-line="23" selection-start-column="32" selection-end-line="23" selection-end-column="32" />
+        <state vertical-scroll-proportion="0.8382126" vertical-offset="251" max-vertical-offset="900">
+          <caret line="53" column="5" selection-start-line="53" selection-start-column="5" selection-end-line="53" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#202#203#0" expanded="true" />
-            <element signature="e#236#237#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Main/Frame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3466872" vertical-offset="0" max-vertical-offset="649">
-          <caret line="15" column="30" selection-start-line="15" selection-start-column="30" selection-end-line="15" selection-end-column="30" />
+        <state vertical-scroll-proportion="0.8320493" vertical-offset="0" max-vertical-offset="675">
+          <caret line="36" column="47" selection-start-line="36" selection-start-column="47" selection-end-line="36" selection-end-column="47" />
           <folding>
-            <element signature="e#340#341#0" expanded="true" />
-            <element signature="e#377#378#0" expanded="true" />
-            <element signature="e#409#410#0" expanded="true" />
-            <element signature="e#446#447#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#657#658#0" expanded="true" />
+            <element signature="e#694#695#0" expanded="true" />
+            <element signature="e#726#727#0" expanded="true" />
+            <element signature="e#763#764#0" expanded="true" />
+            <element signature="e#797#798#0" expanded="true" />
+            <element signature="e#851#852#0" expanded="true" />
           </folding>
         </state>
       </provider>

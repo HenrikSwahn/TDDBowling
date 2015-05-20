@@ -46,9 +46,9 @@ public class FrameTest {
     @Test
     public void test_FrameScore_wantSumOfThrows() {
 
-        Frame f = new Frame(3,3);
+        Frame f = new Frame(2,6);
 
         int result = f.getFrameScore();
-        assertEquals(6, result);
+        assertEquals(8, result);
     }
 }

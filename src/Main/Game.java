@@ -43,8 +43,20 @@ public class Game {
 
             if(f.getType() == Types.STRIKE) {
 
-                returnVal += 10;
-                returnVal += frames[i+1].getFrameScore();
+                if(i < frames.length-2) {
+
+                    if (frames[i + 1].getType() == Types.STRIKE) {
+
+                        returnVal += 20;
+                        returnVal += frames[i + 2].getThrowOne();
+
+                    } else {
+
+                        returnVal += 10;
+                        returnVal += frames[i + 1].getFrameScore();
+
+                    }
+                }
 
             }else if(f.getType() == Types.SPARE) {
 

@@ -117,6 +117,31 @@ public class GameTests {
         assertEquals(88, result);
     }
 
+    //Testing Spare and GameScore
+    @Test
+    public void test_GameScore_fullGameWithNoStrikesAndTwoSpare() {
+
+        Frame[] frames = {
+                new Frame(8,2),
+                new Frame(5,5),
+                new Frame(7,2),
+                new Frame(3,6),
+                new Frame(4,4),
+                new Frame(5,3),
+                new Frame(3,3),
+                new Frame(4,5),
+                new Frame(8,1),
+                new Frame(2,6)
+        };
+
+        for(int i = 0; i < 10; i++) {
+            g.appendFrame(frames[i]);
+        }
+
+        int result = g.getGameScore();
+        assertEquals(98, result);
+    }
+
     //Testing Spare, Strike and GameScore
     @Test
     public void test_GameScore_fullGameWithOneStrikeFollowedByOneSpare() {
@@ -140,5 +165,54 @@ public class GameTests {
 
         int result = g.getGameScore();
         assertEquals(103, result);
+    }
+
+    //Testing Spare, Strike and GameScore
+    @Test
+    public void test_GameScore_fullGameWithMultipleStrikesNoSpares() {
+
+        Frame[] frames = {
+                new Frame(10,0),
+                new Frame(10,0),
+                new Frame(7,2),
+                new Frame(3,6),
+                new Frame(4,4),
+                new Frame(5,3),
+                new Frame(3,3),
+                new Frame(4,5),
+                new Frame(8,1),
+                new Frame(2,6)
+        };
+
+        for(int i = 0; i < 10; i++) {
+            g.appendFrame(frames[i]);
+        }
+
+        int result = g.getGameScore();
+        assertEquals(112, result);
+    }
+
+    @Test
+    public void test_GameScore() {
+
+        Frame[] frames = {
+                new Frame(10,0),
+                new Frame(10,0),
+                new Frame(10,0),
+                new Frame(10,0),
+                new Frame(10,0),
+                new Frame(10,0),
+                new Frame(10,0),
+                new Frame(10,0),
+                new Frame(10,0),
+                new Frame(10,0)
+        };
+
+        for(int i = 0; i < 10; i++) {
+            g.appendFrame(frames[i]);
+        }
+
+        int result = g.getGameScore();
+        assertEquals(240, result);
     }
 }

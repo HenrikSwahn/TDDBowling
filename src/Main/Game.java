@@ -30,4 +30,15 @@ public class Game {
         }
         return true;
     }
+
+    public int getGameScore() {
+
+        int returnVal = 0;
+
+        for(Frame f: frames) {
+            returnVal += f.getFrameScore();
+        }
+
+        return returnVal;
+    }
 }

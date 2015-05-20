@@ -1,7 +1,6 @@
 package Tests;
 
 import Main.Frame;
-import org.junit.Before;
 import org.junit.Test;
 import org.w3c.dom.ranges.RangeException;
 import static org.junit.Assert.*;
@@ -38,7 +37,7 @@ public class FrameTest {
 
     //Test Frame user story
     @Test(expected = RangeException.class)
-    public void test_constructor_secondValueGivenNegativ() {
+    public void test_constructor_secondValueGivenNegative() {
 
         Frame f = new Frame(2, -1);
     }

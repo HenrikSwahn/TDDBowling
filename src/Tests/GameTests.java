@@ -268,4 +268,30 @@ public class GameTests {
         int result = g.getGameScore();
         assertEquals(92, result);
     }
+
+    @Test
+    public void test_GameScore_BonusThrowIsAStrike() {
+
+        Frame[] frames = {
+                new Frame(1,5),
+                new Frame(3,6),
+                new Frame(7,2),
+                new Frame(3,6),
+                new Frame(4,4),
+                new Frame(5,3),
+                new Frame(3,3),
+                new Frame(4,5),
+                new Frame(8,1),
+                new Frame(2,8, Frame.Types.LASTSPARE)
+        };
+
+        for(int i = 0; i < 10; i++) {
+            g.appendFrame(frames[i]);
+        }
+
+        g.setExtraThrow1(10);
+
+        int result = g.getGameScore();
+        assertEquals(93, result);
+    }
 }

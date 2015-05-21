@@ -193,30 +193,6 @@ public class GameTests {
     }
 
     @Test
-    public void test_GameScore() {
-
-        Frame[] frames = {
-                new Frame(10,0),
-                new Frame(10,0),
-                new Frame(10,0),
-                new Frame(10,0),
-                new Frame(10,0),
-                new Frame(10,0),
-                new Frame(10,0),
-                new Frame(10,0),
-                new Frame(10,0),
-                new Frame(10,0)
-        };
-
-        for(int i = 0; i < 10; i++) {
-            g.appendFrame(frames[i]);
-        }
-
-        int result = g.getGameScore();
-        assertEquals(240, result);
-    }
-
-    @Test
     public void test_GameScore_fullGameWithNoStrikesOneSpareAsLastFrame() {
 
         Frame[] frames = {
@@ -315,8 +291,10 @@ public class GameTests {
             g.appendFrame(frames[i]);
         }
 
+        g.setExtraThrow1(10);
+        g.setExtraThrow2(10);
 
         int result = g.getGameScore();
-        assertEquals(240, result);
+        assertEquals(300, result);
     }
 }

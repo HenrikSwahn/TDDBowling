@@ -90,16 +90,25 @@ public class Game {
         if(index < frames.length-2) {
 
             int returnVal = 0;
-            if (frames[index + 1].getType() == Types.STRIKE) {
+            if(frames[index + 1].getType() == Types.STRIKE) {
 
                 returnVal += 20;
                 returnVal += frames[index + 2].getThrowOne();
 
-            } else {
+            }else {
 
                 returnVal += 10;
                 returnVal += frames[index + 1].getFrameScore();
 
+            }
+            return returnVal;
+        }else if(index < frames.length-1) {
+
+            int returnVal = 0;
+            if(frames[index +1].getType() == Types.LASTSTRIKE) {
+
+                returnVal += 20;
+                returnVal += frames[index + 1].getFrameScore();
             }
             return returnVal;
         }

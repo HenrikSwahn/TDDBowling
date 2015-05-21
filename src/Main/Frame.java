@@ -12,7 +12,8 @@ public class Frame {
         STANDARD,
         STRIKE,
         SPARE,
-        LASTSPARE
+        LASTSPARE,
+        LASTSTRIKE
     };
 
     private ArrayList<Integer> _throws;

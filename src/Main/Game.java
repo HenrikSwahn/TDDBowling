@@ -10,18 +10,25 @@ public class Game {
 
     private Frame[] frames;
     private int numFrames;
-    private int extraThrow;
+    private int extraThrow1;
+    private int extraThrow2;
 
     public Game() {
 
         frames = new Frame[10];
         numFrames = 0;
-        extraThrow = 0;
+        extraThrow1 = 0;
     }
 
-    public void setExtraThrow(int points) {
+    public void setExtraThrow1(int points) {
 
-        this.extraThrow = points;
+        this.extraThrow1 = points;
+
+    }
+
+    public void setExtraThrow2(int points) {
+
+        this.extraThrow2 = points;
 
     }
 
@@ -51,34 +58,22 @@ public class Game {
 
             if(f.getType() == Types.STRIKE) {
 
-                if(i < frames.length-2) {
-
-                    if (frames[i + 1].getType() == Types.STRIKE) {
-
-                        returnVal += 20;
-                        returnVal += frames[i + 2].getThrowOne();
-
-                    } else {
-
-                        returnVal += 10;
-                        returnVal += frames[i + 1].getFrameScore();
-
-                    }
-                }
+                returnVal += strikeCalc(i);
 
             }else if(f.getType() == Types.SPARE) {
 
-                if(i < frames.length-1) {
-
-                    returnVal += f.getFrameScore();
-                    returnVal += frames[i + 1].getThrowOne();
-
-                }
+                returnVal += spareCalc(i, f);
 
             }else if(f.getType() == Types.LASTSPARE) {
 
                 returnVal += f.getFrameScore();
-                returnVal += extraThrow;
+                returnVal += extraThrow1;
+
+            }else if(f.getType() == Types.LASTSTRIKE){
+
+                returnVal += 10;
+                returnVal += extraThrow1;
+                returnVal += extraThrow2;
 
             }else {
 
@@ -88,5 +83,37 @@ public class Game {
         }
 
         return returnVal;
+    }
+
+    private int strikeCalc(int index) {
+
+        if(index < frames.length-2) {
+
+            int returnVal = 0;
+            if (frames[index + 1].getType() == Types.STRIKE) {
+
+                returnVal += 20;
+                returnVal += frames[index + 2].getThrowOne();
+
+            } else {
+
+                returnVal += 10;
+                returnVal += frames[index + 1].getFrameScore();
+
+            }
+            return returnVal;
+        }
+        return 0;
+    }
+
+    private int spareCalc(int index, Frame f) {
+
+        if(index < frames.length-1) {
+
+            return f.getFrameScore() + frames[index + 1].getThrowOne();
+
+        }
+
+        return 0;
     }
 }

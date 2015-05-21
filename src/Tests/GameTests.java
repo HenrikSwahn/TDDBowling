@@ -236,9 +236,36 @@ public class GameTests {
             g.appendFrame(frames[i]);
         }
 
-        g.setExtraThrow(7);
+        g.setExtraThrow1(7);
 
         int result = g.getGameScore();
         assertEquals(90, result);
+    }
+
+    @Test
+    public void test_GameScore_fullGameWithStrikeAsLastFrameNoSpares() {
+
+        Frame[] frames = {
+                new Frame(1,5),
+                new Frame(3,6),
+                new Frame(7,2),
+                new Frame(3,6),
+                new Frame(4,4),
+                new Frame(5,3),
+                new Frame(3,3),
+                new Frame(4,5),
+                new Frame(8,1),
+                new Frame(10,0, Frame.Types.LASTSTRIKE)
+        };
+
+        for(int i = 0; i < 10; i++) {
+            g.appendFrame(frames[i]);
+        }
+
+        g.setExtraThrow1(7);
+        g.setExtraThrow2(2);
+
+        int result = g.getGameScore();
+        assertEquals(92, result);
     }
 }

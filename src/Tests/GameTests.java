@@ -297,4 +297,30 @@ public class GameTests {
         int result = g.getGameScore();
         assertEquals(300, result);
     }
+
+    @Test
+    public void test_GameScore_realGameTest() {
+
+        Frame[] frames = {
+                new Frame(6,3),
+                new Frame(7,1),
+                new Frame(8,2),
+                new Frame(7,2),
+                new Frame(10,0),
+                new Frame(6,2),
+                new Frame(7,3),
+                new Frame(10,0),
+                new Frame(8,0),
+                new Frame(7,3, Frame.Types.LASTSPARE)
+        };
+
+        for(int i = 0; i < 10; i++) {
+            g.appendFrame(frames[i]);
+        }
+
+        g.setExtraThrow1(10);
+
+        int result = g.getGameScore();
+        assertEquals(135, result);
+    }
 }

@@ -9,12 +9,20 @@ import Main.Frame.Types;
 public class Game {
 
     private Frame[] frames;
-    int numFrames;
+    private int numFrames;
+    private int extraThrow;
 
     public Game() {
 
         frames = new Frame[10];
         numFrames = 0;
+        extraThrow = 0;
+    }
+
+    public void setExtraThrow(int points) {
+
+        this.extraThrow = points;
+
     }
 
     public int getNumberOfFrames() {
@@ -60,8 +68,17 @@ public class Game {
 
             }else if(f.getType() == Types.SPARE) {
 
+                if(i < frames.length-1) {
+
+                    returnVal += f.getFrameScore();
+                    returnVal += frames[i + 1].getThrowOne();
+
+                }
+
+            }else if(f.getType() == Types.LASTSPARE) {
+
                 returnVal += f.getFrameScore();
-                returnVal += frames[i+1].getThrowOne();
+                returnVal += extraThrow;
 
             }else {
 

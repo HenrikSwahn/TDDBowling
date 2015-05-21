@@ -11,7 +11,8 @@ public class Frame {
     public enum Types {
         STANDARD,
         STRIKE,
-        SPARE
+        SPARE,
+        LASTSPARE
     };
 
     private ArrayList<Integer> _throws;
@@ -31,6 +32,22 @@ public class Frame {
         _throws.add(throwOne);
         _throws.add(throwTwo);
         setType();
+    }
+
+    public Frame(int throwOne, int throwTwo, Types type) {
+
+        _throws = new ArrayList<Integer>(2);
+
+        if((throwOne + throwTwo) > 10) {
+            throw new RangeException((short) -1, "Sum cannot be larger than ten");
+        }
+
+        if((throwOne < 0) || throwTwo < 0) {
+            throw new RangeException((short) -1, "Value cannot be less than zero");
+        }
+        _throws.add(throwOne);
+        _throws.add(throwTwo);
+        this.type = type;
     }
 
     public int getThrowOne() {

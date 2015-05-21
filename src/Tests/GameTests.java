@@ -294,4 +294,29 @@ public class GameTests {
         int result = g.getGameScore();
         assertEquals(93, result);
     }
+
+    @Test
+    public void test_GameScore_perfectGame() {
+
+        Frame[] frames = {
+                new Frame(10,0),
+                new Frame(10,0),
+                new Frame(10,0),
+                new Frame(10,0),
+                new Frame(10,0),
+                new Frame(10,0),
+                new Frame(10,0),
+                new Frame(10,0),
+                new Frame(10,0),
+                new Frame(10,0, Frame.Types.LASTSTRIKE)
+        };
+
+        for(int i = 0; i < 10; i++) {
+            g.appendFrame(frames[i]);
+        }
+
+
+        int result = g.getGameScore();
+        assertEquals(240, result);
+    }
 }

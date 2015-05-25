@@ -7,7 +7,6 @@ import static org.junit.Assert.*;
 
 public class FrameTest {
 
-    //Testing Frame user story
     @Test
     public void test_constructor_validValuesGiven() {
 
@@ -21,28 +20,24 @@ public class FrameTest {
 
     }
 
-    //Test Frame user story
     @Test(expected = RangeException.class)
     public void test_constructor_toLargeValuesGiven() {
 
         Frame f = new Frame(8,7);
     }
 
-    //Test Frame user story
     @Test(expected = RangeException.class)
     public void test_constructor_firstValueGivenNegative() {
 
         Frame f = new Frame(-1, 5);
     }
 
-    //Test Frame user story
     @Test(expected = RangeException.class)
     public void test_constructor_secondValueGivenNegative() {
 
         Frame f = new Frame(2, -1);
     }
 
-    //Testing FrameScore user story
     @Test
     public void test_FrameScore_wantSumOfThrows() {
 

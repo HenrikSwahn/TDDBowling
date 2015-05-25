@@ -39,6 +39,10 @@ public class Game {
 
     public boolean appendFrame(Frame newFrame) {
 
+        if(newFrame == null) {
+            throw new NullPointerException("null found");
+        }
+
         if(numFrames < 10) {
             frames[numFrames++] = newFrame;
         }else {
@@ -51,6 +55,10 @@ public class Game {
 
         int returnVal = 0;
         Frame f;
+
+        if(frames[frames.length-1] == null) {
+            throw new RangeException((short) -1, "All ten frames must be filled in");
+        }
 
         for(int i = 0; i < frames.length; i++) {
 
@@ -83,6 +91,10 @@ public class Game {
         }
 
         return returnVal;
+    }
+
+    public Frame getLastFrame() {
+        return frames[numFrames-1];
     }
 
     private int strikeCalc(int index) {

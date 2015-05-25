@@ -17,7 +17,6 @@ public class GameTests {
         g = new Game();
     }
 
-    //Testing Game user story
     @Test
     public void test_constructor_wantArrayWithTenSlots() {
 
@@ -25,7 +24,6 @@ public class GameTests {
         assertEquals(10, result);
     }
 
-    //Testing Game user story
     @Test
     public void test_insertFrame_wantToReturnTrue() {
 
@@ -33,7 +31,14 @@ public class GameTests {
         assertTrue(result);
     }
 
-    //Testting Game user story
+    @Test
+    public void test_insertFrame_checkThatRightElementIsAdded() {
+
+        Frame f = new Frame(1,1);
+        g.appendFrame(f);
+        assertEquals(f, g.getLastFrame());
+    }
+
     @Test(expected = RangeException.class)
     public void test_insertFrame_toManyFrames() {
 
@@ -42,7 +47,14 @@ public class GameTests {
         }
     }
 
-    //Testing GameScore user story
+    @Test(expected = NullPointerException.class)
+    public void test_insertFrame_NullGiven() {
+
+        for(int i = 0; i < 11; i++) {
+            g.appendFrame(null);
+        }
+    }
+
     @Test
     public void test_GameScore_fullGameNoStrikeOrSpares() {
 
@@ -67,7 +79,52 @@ public class GameTests {
         assertEquals(81, result);
     }
 
-    //Testing Strike And GameScore
+    @Test
+    public void test_GameScore_fullGameAllZero() {
+
+        Frame[] frames = {
+                new Frame(0,0),
+                new Frame(0,0),
+                new Frame(0,0),
+                new Frame(0,0),
+                new Frame(0,0),
+                new Frame(0,0),
+                new Frame(0,0),
+                new Frame(0,0),
+                new Frame(0,0),
+                new Frame(0,0)
+        };
+
+        for(int i = 0; i < 10; i++) {
+            g.appendFrame(frames[i]);
+        }
+
+        int result = g.getGameScore();
+        assertEquals(0, result);
+    }
+
+    @Test(expected = RangeException.class)
+    public void test_GameScore_tooFewFrames() {
+
+        Frame[] frames = {
+                new Frame(1,5),
+                new Frame(3,6),
+                new Frame(7,2),
+                new Frame(3,6),
+                new Frame(4,4),
+                new Frame(5,3),
+                new Frame(3,3),
+                new Frame(4,5),
+                new Frame(8,1),
+        };
+
+        for(int i = 0; i < 9; i++) {
+            g.appendFrame(frames[i]);
+        }
+
+        g.getGameScore();
+    }
+
     @Test
     public void test_GameScore_fullGameWithOneStrikeAndNoSpares() {
 
@@ -92,7 +149,6 @@ public class GameTests {
         assertEquals(94, result);
     }
 
-    //Testing Spare and GameScore
     @Test
     public void test_GameScore_fullGameWithNoStrikesAndOneSpare() {
 
@@ -117,7 +173,6 @@ public class GameTests {
         assertEquals(88, result);
     }
 
-    //Testing Spare and GameScore
     @Test
     public void test_GameScore_fullGameWithNoStrikesAndTwoSpare() {
 
@@ -142,7 +197,32 @@ public class GameTests {
         assertEquals(98, result);
     }
 
-    //Testing Spare, Strike and GameScore
+    @Test
+    public void test_GameScore_fullGameWithAllSpares() {
+
+        Frame[] frames = {
+                new Frame(5,5),
+                new Frame(5,5),
+                new Frame(5,5),
+                new Frame(5,5),
+                new Frame(5,5),
+                new Frame(5,5),
+                new Frame(5,5),
+                new Frame(5,5),
+                new Frame(5,5),
+                new Frame(5,5, Frame.Types.LASTSPARE)
+        };
+
+        for(int i = 0; i < 10; i++) {
+            g.appendFrame(frames[i]);
+        }
+
+        g.setExtraThrow1(5);
+
+        int result = g.getGameScore();
+        assertEquals(150, result);
+    }
+
     @Test
     public void test_GameScore_fullGameWithOneStrikeFollowedByOneSpare() {
 
@@ -167,7 +247,30 @@ public class GameTests {
         assertEquals(103, result);
     }
 
-    //Testing Spare, Strike and GameScore
+    @Test
+    public void test_GameScore_fullGameSpareFollowedByAStrike() {
+
+        Frame[] frames = {
+                new Frame(5,5),
+                new Frame(10,0),
+                new Frame(1,1),
+                new Frame(1,1),
+                new Frame(1,1),
+                new Frame(1,1),
+                new Frame(1,1),
+                new Frame(1,1),
+                new Frame(1,1),
+                new Frame(1,1)
+        };
+
+        for(int i = 0; i < 10; i++) {
+            g.appendFrame(frames[i]);
+        }
+
+        int result = g.getGameScore();
+        assertEquals(48, result);
+    }
+
     @Test
     public void test_GameScore_fullGameWithMultipleStrikesNoSpares() {
 
@@ -243,6 +346,55 @@ public class GameTests {
 
         int result = g.getGameScore();
         assertEquals(92, result);
+    }
+
+    @Test
+    public void test_GameScore_fullGameAllZeroExceptLastFrameStrike() {
+
+        Frame[] frames = {
+                new Frame(0,0),
+                new Frame(0,0),
+                new Frame(0,0),
+                new Frame(0,0),
+                new Frame(0,0),
+                new Frame(0,0),
+                new Frame(0,0),
+                new Frame(0,0),
+                new Frame(0,0),
+                new Frame(10,0, Frame.Types.LASTSTRIKE)
+        };
+
+        for(int i = 0; i < 10; i++) {
+            g.appendFrame(frames[i]);
+        }
+        g.setExtraThrow1(1);
+        g.setExtraThrow2(1);
+        int result = g.getGameScore();
+        assertEquals(12, result);
+    }
+
+    @Test
+    public void test_GameScore_fullGameAllZeroExceptLastFrameSpare() {
+
+        Frame[] frames = {
+                new Frame(0,0),
+                new Frame(0,0),
+                new Frame(0,0),
+                new Frame(0,0),
+                new Frame(0,0),
+                new Frame(0,0),
+                new Frame(0,0),
+                new Frame(0,0),
+                new Frame(0,0),
+                new Frame(5,5, Frame.Types.LASTSPARE)
+        };
+
+        for(int i = 0; i < 10; i++) {
+            g.appendFrame(frames[i]);
+        }
+        g.setExtraThrow1(1);
+        int result = g.getGameScore();
+        assertEquals(11, result);
     }
 
     @Test
